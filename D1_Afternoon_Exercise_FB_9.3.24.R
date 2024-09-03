@@ -30,12 +30,12 @@ ggplot(data = RNA_seq) +
 #Q5
 
 ggplot(data=RNA_seq) +
-  geom_histogram(bins = 10, mapping = aes(x = SMRIN)) +
+  geom_histogram(bins = 30, mapping = aes(x = SMRIN)) +
   xlab("RNA Integrity Number") +
   ylab("Frequency")
 
   # A histogram is best for visualizing a single continuous distribution.
-  # This distribution is unimodal.
+  # This distribution is bimodal with one peak around RIN 7 and another at RIN 10.
 
 #Q6
 
@@ -65,15 +65,27 @@ ggplot(data=RNA_seq) +
 
 ggplot(data=RNA_seq, mapping = aes(x = SMTSISCH, y = SMRIN )) +
   geom_point(size = 0.5, alpha = 0.5) +
-  xlab("RNA Integrity Number") +
-  ylab("Ischemic Time") +
+  xlab("Ischemic Time") +
+  ylab("RNA Integrity Number") +
   facet_wrap("SMTSD") +
   geom_smooth(method = "lm")
 
+  # For most tissue types, the RNA Integrity Number does not change with ischemic time.
+  # For some tissue types, the RNA Integrity Number decreases with ischemic time (ex. adrenal gland, cervix, fallopian tube, bladder, heart)
+  # The relationship does appear to depend on tissue type. 
 
 
+#Q9
 
+ggplot(data=RNA_seq, mapping = aes(x = SMTSISCH, y = SMRIN )) +
+  geom_point(aes(color = SMATSSCR), size = 0.5, alpha = 0.5) +
+  xlab("Ischemic Time") +
+  ylab("RNA Integrity Number") +
+  facet_wrap("SMTSD") +
+  geom_smooth(method = "lm")
 
+  # The longer the ischemic time, the lower the RIN and the higher the autolysis score. 
+  # This is observable in the bladder, lung, and adrenal gland, for example.  
 
 
 
