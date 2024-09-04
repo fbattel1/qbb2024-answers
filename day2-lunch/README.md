@@ -45,6 +45,13 @@
 
 - There appear to be IG pseudogenes on more chromosomes than IG genes. Chromosomes 2, 22, and 14 contaiin the most IG genes and IG pseudogenes. 
 
+##Q2 
+- grep pseudogene gene.gtf is not effective becuase it is not specific for IG pseudogenes and would capture all different pseudogenes. A better pattern would be as above, IG_pseudogene. 
+
+
+##Q3
+- (base) cmdb@QuantBio-20 day2-morning % cut -f1,4,5,14 gene-tabs.gtf > genes.bed
+
 
 
 
