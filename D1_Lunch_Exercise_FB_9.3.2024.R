@@ -6,6 +6,8 @@ library("tidyverse")
 df <- read_tsv("~/Data/GTEx/GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt")
 names(df)
 
+print(df)
+
 df <- df %>%
   mutate( SUBJECT=str_extract( SAMPID, "[^-]+-[^-]+"), .before=1 )
 
@@ -20,7 +22,7 @@ df %>%
   summarize(num_of_samples=n()) %>%
   arrange(num_of_samples)
 
-  # SUBJECT K-562 has the most samples, 217
+  # SUBJECTS K-562 and GTEX-NPJ8 have the most samples, 217
   # SUBJECTS GTEX-1JMI6 and GTEX-1PAR6 have the fewest samples, 1
 
 
@@ -57,14 +59,18 @@ view(df_npj8)
   # For whole blood, the samples are processed using different sequencing techniques. 
 
 #Q7
-df %>%
+meanSMAT <- df %>%
   filter(!is.na(SMATSSCR)) %>%
-  group_by(SMATSSCR) %>%
-  summarize(n())
-  
+  group_by(SUBJECT) %>%
+  summarize(mean(SMATSSCR))
 
-  # 3,554 subjects have a mean SMATSSCR score of 0. 
-  # Most subjects have a mean score of 1, with the number of subjects with a SMATSSCR of 2 or 3 nearly ten-fold lower.
+view(meanSMAT)
+
+sum(meanSMAT == 0)
+
+
+  # 15 subjects have a mean SMATSSCR score of 0. 
+  # A majority of subjects have a mean SMATSSCR below 1 and none have a mean SMATSSCR of 3.
   # In a report, this information could be presented in a histogram or a bar graph.
 
 
