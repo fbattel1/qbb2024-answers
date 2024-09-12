@@ -64,7 +64,7 @@ meanSMAT <- df %>%
   group_by(SUBJECT) %>%
   summarize(mean(SMATSSCR))
 
-view(meanSMAT)
+view(meanSMAT) # Sorted descending and looked through table to get a sense of distribution values. 
 
 sum(meanSMAT == 0)
 
