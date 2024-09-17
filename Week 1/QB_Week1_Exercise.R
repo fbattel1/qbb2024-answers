@@ -26,7 +26,7 @@ ggplot() +
            mapping = aes(x = `# Coverage`, y = Frequency, color = "Coverage across genome"), stat = "identity", fill = "pink") +
   geom_line(mapping = aes(x = 0:14, y = poisson_pmf, color = "Poisson Distribution")) +
   geom_line(mapping = aes(x = 0:14, y = normal_pdf, color = "Normal Distribution")) +
-  labs(color = "Legend", x = "Coverage", y = "Frequency") 
+  labs(color = "Legend", x = "Coverage (3x)", y = "Frequency") +
   ggsave(filename = "ex1_3x_cov.png")
 
 
@@ -49,7 +49,7 @@ ggplot() +
            mapping = aes(x = `# Coverage`, y = Frequency, color = "Coverage across genome"), stat = "identity", fill = "pink") +
   geom_line(mapping = aes(x = 0:26, y = poisson_pmf_10, color = "Poisson Distribution")) +
   geom_line(mapping = aes(x = 0:26, y = normal_pdf_10, color = "Normal Distribution")) +
-  labs(color = "Legend", x = "Coverage", y = "Frequency") + 
+  labs(color = "Legend", x = "Coverage (10x)", y = "Frequency") + 
   ggsave(filename = "ex1_10x_cov.png")
 
 
@@ -73,6 +73,6 @@ ggplot() +
            mapping = aes(x = `# Coverage`, y = Frequency, color = "Coverage across genome"), stat = "identity", fill = "pink") +
   geom_line(mapping = aes(x = 0:55, y = poisson_pmf_30, color = "Poisson Distribution")) +
   geom_line(mapping = aes(x = 0:55, y = normal_pdf_30, color = "Normal Distribution")) +
-  labs(color = "Legend", x = "Coverage", y = "Frequency") +
+  labs(color = "Legend", x = "Coverage (30x)", y = "Frequency") +
   ggsave(filename = "ex1_30x_cov.png")
 
