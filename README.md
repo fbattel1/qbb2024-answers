@@ -15,5 +15,5 @@ Step 1.1
 Step 1.4
 
 1. Approximately 50,000 base pairs had 0 coverage. 
-2. This closely matches the poisson estimates. The normal distribution fits the data poorly. 
+2. This closely matches the poisson expectations. The normal distribution fits the data well. 
 
