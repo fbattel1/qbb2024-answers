@@ -1,4 +1,3 @@
-chr1_snps_0.5.bed	other_chr1.bed	.96350037208948859898
 chr1_snps_0.1.bed	exons_chr1.bed	.48746864640067052982
 chr1_snps_0.1.bed	introns_chr1.bed	1.06104218308409251710
 chr1_snps_0.1.bed	cCREs_chr1.bed	.98570729873380388393
