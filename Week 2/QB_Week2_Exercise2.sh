@@ -7,12 +7,13 @@
 # Higher level for loop, loop through higher level SNP files
 # Nested within, loop through 4 feature files 
 
-touch snp_counts.txt # Create file with given name (written later)
 
 # Create two variabls with array of strings, strings being file names 
 SNP_files=("chr1_snps_0.1.bed" "chr1_snps_0.2.bed" "chr1_snps_0.3.bed" "chr1_snps_0.4.bed" "chr1_snps_0.5.bed")
 feature_files=("exons_chr1.bed" "introns_chr1.bed" "cCREs_chr1.bed" "other_chr1.bed")
 genome_file=("genome_chr1.bed")
+
+touch snp_counts.txt # Create file with given name (written later)
 
 for SNP in ${SNP_files[@]} # "Loop through each possible MAF value"
 do
