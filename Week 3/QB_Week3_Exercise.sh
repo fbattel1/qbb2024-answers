@@ -13,7 +13,7 @@
 # Open HTML in finder and will open webpage 
 
 # Q1.1 
-#wc -l 
+#wc -l A01_09.fastq
 
 
 # Exercise 2
@@ -26,16 +26,29 @@
  # There are 17 chromosomes in the yeast genome according to grep but google says 16
  # When grep "chrXVII" get error, when grep "chrXVI" get result
 
-# Q2.2
+# Q2.2 & Q2.4
 
-for my_sample in *.fastq # Reads every file with this suffix 
-do
-    #echo ${my_sample}
-    sample_basename=`basename ${my_sample} .fastq` # Makes name of each file without suffix
-    #echo ${sample_basename}
-    rgroup="@RG\tID:${sample_basename}\tSM:${sample_basename}" # Creates a variable to add a header to each file
-    bwa mem -R ${rgroup} sacCer3.fa ${sample_basename}.fastq > ${sample_basename}.sam # Aligns reads of each file, given rgroup header, to ref genome and generates a sam file
-    samtools sort -@ 4 -O bam -o ${sample_basename}.bam ${sample_basename}.sam # Sorts by position in genome and converts to bam file
-    samtools index ${sample_basename}.bam # Indexes bam files for upload to IGV 
-done
+# for my_sample in *.fastq # Reads every file with this suffix 
+# do
+#     #echo ${my_sample}
+#     sample_basename=`basename ${my_sample} .fastq` # Makes name of each file without suffix
+#     #echo ${sample_basename}
+#     rgroup="@RG\tID:${sample_basename}\tSM:${sample_basename}" # Creates a variable to add a header to each file
+#     bwa mem -R ${rgroup} sacCer3.fa ${sample_basename}.fastq > ${sample_basename}.sam # Aligns reads of each file, given rgroup header, to ref genome and generates a sam file
+#     samtools sort -@ 4 -O bam -o ${sample_basename}.bam ${sample_basename}.sam # Sorts by position in genome and converts to bam file
+#     samtools index ${sample_basename}.bam # Indexes bam files for upload to IGV 
+# done
+
+# #Q2.3
+
+# wc -l A01_09.sam
+
+# # There are 669568 read alignments in the SAM file
+
+# grep -c chrIII A01_09.sam
+
+# 18196 alignments are to loci on chromosome III 
+
+
+# Q2.4 
 
