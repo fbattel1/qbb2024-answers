@@ -42,12 +42,11 @@ grep -c chrIII A01_09.sam
 # Q2.5
 
     #2.4
+    # The depth of coverage is highly variable, with most positions around 4 or 5x, determined by eye. This matches 1.3, which was 4x.
 
     #2.5
-
-# There are 3 SNPs in this window. 
-# Uncertain about the third SNP becuase it only has 2x coverage while the others have 4x or 5x coverage
+    # There are 3 SNPs in this window. 
+    # Uncertain about the third SNP becuase it only has 2x coverage while the others have 4x or 5x coverage
 
     #2.6
-
-# The position is chrIV:825,834. This SNP does not fall within a gene.
+    # The position is chrIV:825,834. This SNP does not fall within a gene.
