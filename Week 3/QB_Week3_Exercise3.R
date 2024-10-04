@@ -18,14 +18,19 @@ ggplot(data = AF, mapping = aes(x = V1)) + # Plots data loaded as AF and places 
 
 
 # Q3.3 Read Depth Distribution 
-DP <- read.table("~/Documents/Quant bio/qbb2024-answers/Week 3/DP.txt") # Loads file into data frame
+DP <- read.table("~/Documents/Quant bio/qbb2024-answers/Week 3/DP.txt", header = TRUE) # Loads file into data frame
 #view(DP)
 
+DP2 <- as.numeric(as.character(DP$V1)) # Trying everything i can to understand why histogram not plotting
 
-ggplot(data = DP, mapping = aes(x = V1)) + 
-  geom_histogram(bins= 21, color = "black", fill = "lavender") + 
+sum(is.na(DP$V1)) # This is 0, so there are no "NA" values interfering 
+
+unique(DP$V1)
+
+ggplot(data = DP, aes(x = "V1")) + 
+  geom_histogram(bins= 21, color = "black", fill = "lightblue") + 
   xlim(0, 20) +
-  labs(color = "", x = "Allele Frequency per Variant", y = "Frequency") +
+  labs(color = "", x = "Depth Read per Variant", y = "Frequency") +
   theme(panel.border = element_rect("black", fill = NA, size = 0.5)) +
-  ggtitle("Allele Frequency Distribution")  
- # ggsave(filename = "AF.jpg") # Saves
+  ggtitle("Depth Read Distribution")  
+ # ggsave(filename = "DP.jpg") # Saves
