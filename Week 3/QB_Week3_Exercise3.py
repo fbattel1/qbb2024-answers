@@ -34,3 +34,5 @@ for line in file: #  Goes line by line in the file opened above
 
 
 file.close()
+
+# Rest of answers in R file
