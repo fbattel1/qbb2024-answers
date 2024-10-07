@@ -10,6 +10,7 @@ colnames(df) <- headers
 #view(df)
 
 df2 <- df %>%
+  dplyr::mutate(Log2_enrichment = log2(Enrichment)) %>%
   dplyr::mutate(Feature = gsub("_chr1.bed", "", Feature)) %>% # Mutate Feature column to just have feature name
   dplyr::mutate(MAF = gsub("chr1_snps_", "", MAF)) %>%
   dplyr::mutate(MAF = gsub(".bed", "", MAF))
@@ -20,8 +21,7 @@ df2 <- df %>%
 ggplot(data = df2, aes(x = MAF, y = Enrichment, color = Feature, group = Feature)) +
   geom_point() +
   geom_line() +
-  scale_y_continuous(trans = "log2") +
-  ggtitle("MAF Enrichment by Feature")
+  ggtitle("MAF Log2 Enrichment by Feature")
 ggsave(filename = "snp_enrichments.pdf")
 
 
