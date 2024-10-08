@@ -8,9 +8,3 @@ Q 2.3
 2. This is likley due to the alleles not being common in large populations. 
 
 3. Yes, one would expect regulatory elements, introns, and 'other' to not change much due to selective pressure. Meanwhile, exons, which code for genes and have phenotypes, are more likely to undergo selective pressure. This is because genetic changes that confer a fitness advantage are more likely to be maintained in a population. Parts of the genome that are expressed, i.e., exons, are subject to such pressure. 
-
-
-
-
-## I don't have a great understanding of these topics because they weren't taught in class. They shouldn't have asked us questions on these topics without reviewing them. 
-
