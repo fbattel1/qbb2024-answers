@@ -66,8 +66,9 @@ du -h A01*.fastq # Finds size of all files beginning with A01 and ending with .f
 
 
 # Q1.5
-fastqc A01_09.fastq
+fastqc A01_*.fastq
 
+# For A01_09: 
 # The median is approximately 30
 # A higher sequence quality number means that the base is likely not an error. With 30 being high, it means that most bp are not errors.
 # There is not much variation in quality along the read.
