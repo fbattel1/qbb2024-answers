@@ -22,3 +22,16 @@ The origin of the most overrepresented sequence in this sample is Drosophila, wh
 I would keep 15 samples.
 
 Blocks of triplicates are clearly visible. This suggests high consistency between replicates. 
+
+
+
+## Q3
+
+### Q3.3
+
+This doesn't look right, the data should be grouped by sample with each replicate a different shape, instead of every single replicate showing as its own sample. 
+
+
+### Q3.6
+
+Yes, the categories of enrichment do make sense because they are involved in digestion and metabolism, and these samples are from the Drosophila midgut.
