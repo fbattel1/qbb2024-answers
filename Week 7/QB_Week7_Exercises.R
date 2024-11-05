@@ -91,6 +91,7 @@ dev.off()
 # Q1.3.3
   # PC1 explains 48% of the variance in the data. PC2 explains 7% of the variance in the data.
   # PC1 appears to be associated with cause of death and age group. 
+  # PC1 separates cause of death into two groups, natural death and ventilator cases 
   # There is some association of PC1 with sex, but some is also associated with PC2. 
 
 
