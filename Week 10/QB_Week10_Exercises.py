@@ -190,3 +190,7 @@ labels = filter_by_size(labels, 500, 10000000)
 
 
 ### ---- Exercise 3: Find mean signal for each nucleus from PCNA and nascentRNA ----
+
+# I have absolutely no idea how to do this. 
+# In fact I'm not even sure if what I did before worked.
+# I have no idea how to check it, either.
