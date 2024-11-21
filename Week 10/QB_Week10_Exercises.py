@@ -51,6 +51,7 @@ for gene in genes: # loops through each gene
 
 
 ### ---- Exercise 2.2: Find labels for each image based on DAPI mask ----
+# From live code
 
 def find_labels(mask):
     # Set initial label
@@ -158,6 +159,7 @@ labels = find_labels(mask)
 
 
 ### ---- Exercise 2.3: Filter out labeled outliers based on size -----
+# From live code 
 sizes = np.bincount(labels.ravel())
 
 for i in range(1, np.amax(labels)+1):
@@ -183,7 +185,7 @@ def filter_by_size(labels, minsize, maxsize):
         labels[np.where(labels == j)] = i
     return labels
 
-labels = filter_by_size(labels, 500, 10000000)
+#labels = filter_by_size(labels, 500, 10000000)
 
 #plt.imshow(labels == 25)
 #plt.show()
@@ -191,6 +193,43 @@ labels = filter_by_size(labels, 500, 10000000)
 
 ### ---- Exercise 3: Find mean signal for each nucleus from PCNA and nascentRNA ----
 
-# I have absolutely no idea how to do this. 
-# In fact I'm not even sure if what I did before worked.
-# I have no idea how to check it, either.
+results = [] # Opens a list to store our results
+
+for gene in genes: # loops through genes
+    for field in fields: # lopos through fields 
+        image = images[f"{gene}_{field}"] # gets image name 
+        dapi_mask = mask  # Use DAPI mask from ex. 2
+        labels = find_labels(dapi_mask)  # Pull labels from ex. 2
+        labels = filter_by_size(labels, minsize=100, maxsize=10000)  # Filters from ex. 2
+        
+        # Open lists for mean signal of nascentRNA and PCNA and the ratio 
+        mean_nascentRNA = []
+        mean_pcna = []
+        ratios = []
+
+        # Assuming each nucleus is labeled, loop through each label 
+        for i in range(1, np.amax(labels) + 1):  # Skips background, which is labeled as 0
+            where = np.where(labels == i) # each label, ith position 
+            mean_nascentRNA.append(np.mean(image[where[0], where[1], 1]))  # Appends pixel of nucleus for nascentRNA to list created above
+            mean_pcna.append(np.mean(image[where[0], where[1], 2]))  # Appends pixel of nucleus for PCNA to list created above
+
+        for nRNA, pcna in zip(mean_nascentRNA, mean_pcna): # Loops through the lists from above
+            if pcna != 0:  # Avoids dividing by 0 
+                ratios.append(np.log2(nRNA / pcna)) # Calculates the ratio of nRNA to pcna mean intensity 
+            else:
+                ratios.append(0)  # Assigns ratio as 0 if PCNA is 0 
+
+        for mnRNA, mPCNA, ratio in zip(mean_nascentRNA, mean_pcna, ratios): # For above
+            results.append([gene, mnRNA, mPCNA, ratio]) # Append these lists to the results list opened outside the loop 
+
+
+output_filename = "gene_expression_results.txt" # Makes a variable equal to the file name I want to populate 
+with open(output_filename, 'w') as file: # Opens this output file in write mode 
+    file.write("Gene\tMean_NascentRNA\tMean_PCNA\tRatio\n") # Writes headers to the file 
+    
+    for result in results: # For each part of the results list above 
+        gene = result[0]  # Populates gene with the result for position 0, corresponding to gene name 
+        mean_nascentRNA = result[1] # Populates spot 2 with the mean for that 
+        mean_pcna = result[2] # As above for spot 3
+        ratio = result[3] # As above for spot 4
+        file.write(f"{gene_fied}\t{mean_nascentRNA:.4f}\t{mean_pcna:.4f}\t{ratio:.4f}\n") # Writes to file separating by newline 
